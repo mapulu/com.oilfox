@@ -1,0 +1,249 @@
+{
+  "id": "com.oilfox",
+  "version": "0.0.1",
+  "compatibility": ">=2.4.0",
+  "sdk": 2,
+  "name": {
+    "en": "Oilfox"
+  },
+  "description": {
+    "en": "Adds support for Oilfox"
+  },
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Martin P",
+    "email": "martin@pussamsies.de"
+  },
+   "brandColor": "#000000",
+  "capabilities": {
+      "fillLevel": {
+      "type": "number",
+	  "uiComponent": "sensor",
+	  "icon": "/assets/level.svg",
+	  "units": {
+        "en": "%"
+      },
+      "title": {
+        "en": "Fill Level",
+        "nl": "Fill Level",
+        "de": "Füllstand"
+      },
+      "desc": {
+        "en": "Fill Level",
+        "nl": "Fill Level",
+        "de": "Füllstand"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true
+    },
+	  "fillVolume": {
+      "type": "number",
+	  "uiComponent": "sensor",
+	   "icon": "/assets/volume.svg",
+	  "units": {
+        "en": "Litres",
+		"de": "Liter"
+      },
+      "title": {
+        "en": "Fill Volume",
+        "nl": "Fill Volume",
+        "de": "Füllmenge"
+      },
+      "desc": {
+        "en": "Fill Volume",
+        "nl": "Fill Volume",
+        "de": "Füllmenge"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true
+    },
+     "fillHeight": {
+      "type": "number",
+	  "uiComponent": "sensor",
+	  "icon": "/assets/height.svg",
+	  "units": {
+        "en": "cm",
+		"de": "cm"
+      },
+      "title": {
+        "en": "Fill Height",
+        "nl": "Fill Height",
+        "de": "Füllhöhe"
+      },
+      "desc": {
+        "en": "Fill Height",
+        "nl": "Fill Height",
+        "de": "Füllhöhe"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true
+    }
+	},
+      "flow": {
+        "triggers": [
+		{
+            "id": "fillLevel_changed",
+            "title": {
+                "en": "The Fill Level value has changed",
+                "nl": "The Fill Level value has changed",
+				"de": "Der Füllstand-Wert hat sich geändert"
+            },
+			"tokens": [
+          {
+            "name": "value",
+            "type": "number",
+            "title": {
+                            "en": "Fill-Level",
+                            "nl": "Fill-Level",
+                            "de": "Füllstand"
+            },
+            "example": "20"
+          }
+		],
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "filter" : "driver_id=oilfox"
+              }
+            ]
+        },
+				{
+            "id": "fillVolume_changed",
+            "title": {
+                "en": "The Fill Volume value has changed",
+                "nl": "The Fill Volume value has changed",
+				"de": "Der Füllmenge-Wert hat sich geändert"
+            },
+			"tokens": [
+          {
+            "name": "value",
+            "type": "number",
+            "title": {
+                            "en": "Fill-Volume",
+                            "nl": "Fill-Volume",
+                            "de": "Füllmenge"
+            },
+            "example": "20"
+          }
+		],
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "filter" : "driver_id=oilfox"
+              }
+            ]
+        },
+				{
+            "id": "fillHeight_changed",
+            "title": {
+                "en": "The Fill Height value has changed",
+                "nl": "The Fill Height value has changed",
+				"de": "Der Füllhöhe-Wert hat sich geändert"
+            },
+			"tokens": [
+          {
+            "name": "value",
+            "type": "number",
+            "title": {
+                            "en": "Fill-Height",
+                            "nl": "Fill-Height",
+                            "de": "Füllhöhe"
+            },
+            "example": "20"
+          }
+		],
+            "args": [
+              {
+                "name": "device",
+                "type": "device",
+                "filter" : "driver_id=oilfox"
+              }
+            ]
+        }
+       
+            ]
+        },
+  "drivers": [
+    {
+      "id": "oilfox",
+      "name": {
+        "en": "Oilfox"
+      },
+      "class": "sensor",
+      "capabilities": [ "fillLevel", "fillVolume", "fillHeight", "measure_battery" ],
+      "images": {
+        "large": "/drivers/oilfox/assets/images/large.png",
+        "small": "/drivers/oilfox/assets/images/small.png"
+      },
+	   "settings": [
+	                   {
+                    "type": "group",
+                    "label": {
+						"en": "Oilfox Settings",
+						"nl": "Oilfox Settings",
+						"de": "Oilfox Einstellungen"
+                    },
+	   "children": [
+        {
+          "id": "username",
+          "type": "text",
+          "label": {
+            "en": "Oilfox Mail"
+          }
+        },
+        {
+          "id": "password",
+          "type": "password",
+          "label": {
+            "en": "Oilfox password"
+          }
+        }
+		]
+		}
+		],
+	  "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+		    "usernameLabel": {
+              "en": "E-Mailadress",
+              "nl": "E-Mailadress",
+              "de": "E-Mailadresse"
+                   },
+		    "usernamePlaceholder": {
+              "en": "E-Mailadress",
+              "nl": "E-Mailadress",
+              "de": "E-Mailadresse"
+                   },
+          "options": {
+            "logo": "/assets/icon.png"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+]
+	  
+    }
+  ]
+}
